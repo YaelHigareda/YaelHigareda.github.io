@@ -1,14 +1,857 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="generator" content="Hostinger Horizons" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Hostinger Horizons</title>
-	</head>
-	<body>
-		<div id="root"></div>
-		<script type="module" src="/src/main.jsx"></script>
-	</body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portafolio | Vivian Yael Higareda Torres</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --text:#111827;
+    --text-light:#6b7280;
+    --primary:#2563eb;
+    --secondary:#1e40af;
+    --border:#dbeafe;
+    --shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+/* DARK MODE */
+
+.dark-mode{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --text:#f8fafc;
+    --text-light:#cbd5e1;
+    --primary:#60a5fa;
+    --secondary:#3b82f6;
+    --border:#334155;
+    --shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
+}
+
+/* NAVBAR */
+
+header{
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    background:#020617;
+    padding:18px 8%;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:1.7rem;
+    font-weight:700;
+}
+
+.logo span{
+    color:var(--primary);
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--primary);
+}
+
+.menu-btn{
+    display:none;
+    font-size:2rem;
+    color:white;
+    cursor:pointer;
+}
+
+.toggle-btn{
+    background:transparent;
+    border:2px solid white;
+    color:white;
+    padding:8px 14px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-left:15px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    background:linear-gradient(to right,#020617,#0f172a,#1d4ed8);
+    color:white;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:50px;
+    padding:130px 8%;
+}
+
+.hero-text h4{
+    color:#60a5fa;
+    font-size:1.5rem;
+}
+
+.hero-text h1{
+    font-size:4rem;
+    line-height:1.1;
+    margin:15px 0;
+}
+
+.hero-text h2{
+    color:#3b82f6;
+    margin-bottom:25px;
+}
+
+.hero-text p{
+    line-height:1.9;
+    font-size:1.1rem;
+    max-width:600px;
+}
+
+.hero-buttons{
+    margin-top:35px;
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    padding:14px 28px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#2563eb;
+    color:white;
+}
+
+.btn-primary:hover{
+    background:#1d4ed8;
+}
+
+.btn-outline{
+    border:2px solid white;
+    color:white;
+}
+
+.btn-outline:hover{
+    background:white;
+    color:black;
+}
+
+.hero-image{
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image img{
+    width:100%;
+    max-width:420px;
+    border-radius:30px;
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+/* SECTIONS */
+
+section{
+    padding:90px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:2.3rem;
+    color:var(--text);
+}
+
+/* SOBRE MI */
+
+.about{
+    text-align:center;
+}
+
+.about p{
+    max-width:900px;
+    margin:auto;
+    color:var(--text-light);
+    line-height:2;
+    font-size:1.05rem;
+}
+
+/* TIMELINE */
+
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+    padding-left:40px;
+}
+
+.timeline::before{
+    content:'';
+    position:absolute;
+    left:14px;
+    top:0;
+    width:4px;
+    height:100%;
+    background:var(--primary);
+    border-radius:10px;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:35px;
+}
+
+.timeline-dot{
+    position:absolute;
+    left:-34px;
+    top:30px;
+    width:18px;
+    height:18px;
+    background:var(--primary);
+    border-radius:50%;
+    border:4px solid var(--bg);
+}
+
+.timeline-content{
+    background:var(--card);
+    padding:28px;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    transition:.3s;
+}
+
+.timeline-content:hover{
+    transform:translateY(-5px);
+}
+
+.timeline-content span{
+    color:var(--primary);
+    font-size:.75rem;
+    font-weight:700;
+}
+
+.timeline-content h3{
+    margin:10px 0;
+    font-size:1.5rem;
+}
+
+.timeline-content p{
+    color:var(--text-light);
+    line-height:1.7;
+}
+
+/* SKILLS */
+
+.skills-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.skill-card{
+    background:var(--card);
+    padding:35px;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    border:2px solid var(--border);
+    transition:.3s;
+}
+
+.skill-card:hover{
+    transform:translateY(-5px);
+}
+
+.skill-card h3{
+    margin-bottom:20px;
+    font-size:1.5rem;
+}
+
+.skill-card ul{
+    padding-left:20px;
+}
+
+.skill-card li{
+    margin:12px 0;
+    color:var(--text);
+}
+
+/* DIFERENTES COLORES */
+
+.tech{
+    border-color:#86efac;
+}
+
+.tech h3{
+    color:#059669;
+}
+
+.languages{
+    border-color:#c4b5fd;
+}
+
+.languages h3{
+    color:#7c3aed;
+}
+
+/* IMPORTANTE PARA DARK MODE */
+
+.dark-mode .tech{
+    background:#052e2b;
+    border-color:#10b981;
+}
+
+.dark-mode .languages{
+    background:#2e1065;
+    border-color:#8b5cf6;
+}
+
+.dark-mode .skill-card li,
+.dark-mode .skill-card p{
+    color:#f8fafc;
+}
+
+/* CONTACT */
+
+.contact-form{
+    max-width:900px;
+    margin:auto;
+    background:var(--card);
+    padding:35px;
+    border-radius:20px;
+    box-shadow:var(--shadow);
+}
+
+form{
+    display:grid;
+    gap:20px;
+}
+
+.input-group{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+input,textarea{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #d1d5db;
+    font-family:'Poppins',sans-serif;
+    background:transparent;
+    color:var(--text);
+}
+
+textarea{
+    height:160px;
+    resize:none;
+}
+
+button{
+    padding:14px;
+    border:none;
+    background:var(--primary);
+    color:white;
+    border-radius:12px;
+    font-size:1rem;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:var(--secondary);
+}
+
+/* FOOTER */
+
+footer{
+    background:#020617;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-text p{
+        margin:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .input-group{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:85px;
+        right:0;
+        width:100%;
+        background:#020617;
+        flex-direction:column;
+        text-align:center;
+        padding:25px 0;
+        display:none;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero-text h1{
+        font-size:3rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+
+<nav>
+
+<div class="logo">
+<span>&lt;/&gt;</span> Vivian Yael
+</div>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#sobre">Sobre mí</a></li>
+<li><a href="#escolaridad">Escolaridad</a></li>
+<li><a href="#habilidades">Habilidades</a></li>
+<li><a href="#contacto">Contacto</a></li>
+
+</ul>
+
+<div>
+
+<button class="toggle-btn" id="themeBtn">🌙</button>
+
+<span class="menu-btn" id="menuBtn">☰</span>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+
+<div class="hero-text">
+
+<h4>¡Hola! Soy</h4>
+
+<h1>Vivian Yael <br> Higareda Torres</h1>
+
+<h2>Desarrolladora en Sistemas Electrónicos Inteligentes</h2>
+
+<p>
+Nacionalidad: Mexicana.<br>
+Graduada de la especialidad de programación,
+con conocimientos en Python, JavaScript,
+CSS y HTML.<br>
+En proceso de ampliar mis conocimientos y
+comprometida con el aprendizaje continuo.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#sobre" class="btn btn-primary">
+Conóceme más
+</a>
+
+<a href="#" class="btn btn-outline">
+Descargar CV
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img src="TU-FOTO.jpg" alt="Vivian Yael">
+
+</div>
+
+</section>
+
+<!-- SOBRE MI -->
+
+<section id="sobre">
+
+<div class="section-title">
+<h2>Sobre mí</h2>
+</div>
+
+<div class="about">
+
+<p>
+Soy una estudiante apasionada por el desarrollo web y la programación.
+Me gusta aprender nuevas tecnologías y mejorar constantemente mis habilidades.
+Tengo conocimientos en diseño responsivo, programación y desarrollo frontend.
+</p>
+
+</div>
+
+</section>
+
+<!-- ESCOLARIDAD -->
+
+<section id="escolaridad">
+
+<div class="section-title">
+<h2>Escolaridad</h2>
+</div>
+
+<div class="timeline">
+
+<!-- ITEM -->
+
+<article class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-content">
+
+<span>UNIVERSIDAD</span>
+
+<h3>Actualmente cursando en IIT-UACJ</h3>
+
+<p>
+Av. del Charro 450 Nte,
+Colonia Universidad,
+C.P. 32310,
+Ciudad Juárez,
+Chihuahua, México.
+</p>
+
+</div>
+
+</article>
+
+<!-- ITEM -->
+
+<article class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-content">
+
+<span>PREPARATORIA</span>
+
+<h3>CBTIS 114</h3>
+
+<p>
+Graduada con título técnico de programación,
+Benjamín Herrera 2825,
+Parques Industriales,
+32600 Juárez, Chih.
+</p>
+
+</div>
+
+</article>
+
+<!-- ITEM -->
+
+<article class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-content">
+
+<span>SECUNDARIA</span>
+
+<h3>FEDERAL NO.1</h3>
+
+<p>
+C. 16 de Septiembre 2000,
+Partido Romero,
+32030 Juárez, Chih.
+</p>
+
+</div>
+
+</article>
+
+<!-- ITEM -->
+
+<article class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-content">
+
+<span>PRIMARIA</span>
+
+<h3>VICENTE GUERRERO</h3>
+
+<p>
+Av. Plutarco Elías Calles s/n,
+Fovissste,
+32310 Juárez, Chih.
+</p>
+
+</div>
+
+</article>
+
+<!-- ITEM -->
+
+<article class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-content">
+
+<span>JARDÍN DE NIÑOS</span>
+
+<h3>CRI-CRI</h3>
+
+<p>
+Manila s/n,
+Progresista,
+32310 Juárez, Chih.
+</p>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+<!-- HABILIDADES -->
+
+<section id="habilidades">
+
+<div class="section-title">
+<h2>Habilidades</h2>
+</div>
+
+<div class="skills-container">
+
+<!-- TECNICAS -->
+
+<div class="skill-card tech">
+
+<h3>Competencias Técnicas</h3>
+
+<ul>
+
+<li>Python</li>
+<li>JavaScript</li>
+<li>CSS</li>
+<li>HTML</li>
+<li>Responsive Design</li>
+<li>Git</li>
+
+</ul>
+
+</div>
+
+<!-- IDIOMAS -->
+
+<div class="skill-card languages">
+
+<h3>Idiomas</h3>
+
+<ul>
+
+<li>
+<strong>Inglés</strong>
+
+<p style="margin-top:10px;">
+8 niveles de adolescentes en el centro de lenguas
+de Cd. Juárez y los 3 niveles de universidad
+en IIT-UACJ.
+</p>
+
+</li>
+
+<li style="margin-top:20px;">
+<strong>Español</strong>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACTO -->
+
+<section id="contacto">
+
+<div class="section-title">
+<h2>Contacto</h2>
+</div>
+
+<div class="contact-form">
+
+<form id="formulario">
+
+<div class="input-group">
+
+<input type="text" id="nombre" placeholder="Tu nombre">
+
+<input type="email" id="correo" placeholder="Tu correo electrónico">
+
+</div>
+
+<textarea id="mensaje" placeholder="Escribe tu mensaje"></textarea>
+
+<button type="submit">
+Enviar mensaje
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 Vivian Yael Higareda Torres |
+Portafolio Profesional
+</p>
+
+</footer>
+
+<script>
+
+/* MENU */
+
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+/* DARK MODE */
+
+const themeBtn = document.getElementById('themeBtn');
+
+themeBtn.addEventListener('click', () => {
+
+    document.body.classList.toggle('dark-mode');
+
+    if(document.body.classList.contains('dark-mode')){
+        themeBtn.innerHTML = '☀️';
+    }else{
+        themeBtn.innerHTML = '🌙';
+    }
+
+});
+
+/* FORMULARIO */
+
+const formulario = document.getElementById('formulario');
+
+formulario.addEventListener('submit', (e)=>{
+
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const correo = document.getElementById('correo').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    if(nombre === '' || correo === '' || mensaje === ''){
+
+        alert('Por favor completa todos los campos.');
+        return;
+    }
+
+    const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!regexCorreo.test(correo)){
+
+        alert('Ingresa un correo válido.');
+        return;
+    }
+
+    alert('Mensaje enviado correctamente.');
+
+    formulario.reset();
+
+});
+
+</script>
+
+</body>
 </html>
